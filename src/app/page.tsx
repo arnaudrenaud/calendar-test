@@ -35,7 +35,11 @@ const Calendar = () => {
                   <div className="font-bold">{dateAndMonth}</div>
                 </h4>
                 {hours.map((hour) => (
-                  <Button key={hour} variant="secondary">
+                  <Button
+                    key={hour}
+                    variant="secondary"
+                    className="hover:bg-primary hover:text-primary-foreground"
+                  >
                     {getFormattedHour(hour)}
                   </Button>
                 ))}
