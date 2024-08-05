@@ -27,6 +27,12 @@ export function getRandomHours(): number[] {
   return randomIntegers;
 }
 
-export function getDateOnlyInFrenchLocale(day: Date): React.ReactNode {
-  return format(day, "EEEE d MMMM", { locale: fr });
+export function getDateOnlyInFrenchLocale(day: Date): {
+  dayOfWeek: string;
+  dateAndMonth: string;
+} {
+  return {
+    dayOfWeek: format(day, "EEEE", { locale: fr }),
+    dateAndMonth: format(day, "d MMMM", { locale: fr }),
+  };
 }
