@@ -36,3 +36,7 @@ export function getDateOnlyInFrenchLocale(day: Date): {
     dateAndMonth: format(day, "d MMMM", { locale: fr }),
   };
 }
+
+export function isSameDateOrBefore(date1: Date, date2: Date): boolean {
+  return date1 <= date2;
+}

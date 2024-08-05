@@ -6,6 +6,7 @@ import {
   getFormattedHour,
   getNextSevenDays,
   getRandomHours,
+  isSameDateOrBefore,
 } from "@/lib/date";
 import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
 
@@ -14,7 +15,11 @@ const Calendar = () => {
 
   return (
     <main className="flex w-full">
-      <Button title="Go to previous week" variant="outline">
+      <Button
+        title="Go to previous week"
+        variant="outline"
+        disabled={isSameDateOrBefore(days[0], new Date())}
+      >
         <ArrowBigLeft />
       </Button>
       <ol className="w-full grid grid-cols-7">
