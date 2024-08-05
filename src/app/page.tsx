@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useActionState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -9,9 +11,20 @@ import {
   isSameDateOrBefore,
 } from "@/lib/date";
 import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
+import { useAppStore } from "@/store/hooks";
+import { setSelectedWeek } from "@/store/store";
+import { useDispatch } from "react-redux";
 
 const Calendar = () => {
   const days = getNextSevenDays();
+
+  const store = useAppStore();
+  const state = store.getState().calendar;
+  const dispatch = useDispatch();
+
+  const goToNextWeek = () => {
+    dispatch(setSelectedWeek(state.selectedWeek + 1));
+  };
 
   return (
     <main className="flex w-full">
@@ -48,7 +61,7 @@ const Calendar = () => {
           );
         })}
       </ol>
-      <Button title="Go to next week" variant="outline">
+      <Button title="Go to next week" variant="outline" onClick={goToNextWeek}>
         <ArrowBigRight />
       </Button>
     </main>
